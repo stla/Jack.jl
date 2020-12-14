@@ -1,9 +1,9 @@
 module Jack
 
 import DynamicPolynomials
-export Jack
-export Zonal
-export Schur
+export JackPolynomial
+export ZonalPolynomial
+export SchurPolynomial
 export JackSymbolic
 
 function isPartition(lambda::Vector{<:Integer})
@@ -46,7 +46,7 @@ end
 # ------------------------------------------------------------------------------
 #~~ Jack polynomial ~~~~##
 # ------------------------------------------------------------------------------
-function Jack(
+function JackPolynomial(
       x::Vector{C},
       lambda::Vector{I},
       alpha::T
@@ -126,7 +126,7 @@ function hookLengths(lambda::Vector{<:Integer}, alpha::Real)
   return vcat(upper,lower)
 end
 
-function Zonal(
+function ZonalPolynomial(
       x::Vector{<:Union{R,Complex{R}}},
       lambda::Vector{<:Integer}
   ) where {R<:Real}
@@ -139,7 +139,7 @@ end
 # ------------------------------------------------------------------------------
 #~~ Schur ~~~~##
 # ------------------------------------------------------------------------------
-function Schur(
+function SchurPolynomial(
       x::Vector{T},
       lambda::Vector{I}
   ) where {T<:Number, I<:Integer}
@@ -188,7 +188,7 @@ end
 # ------------------------------------------------------------------------------
 #~~ JackSymbolic ~~~~##
 # ------------------------------------------------------------------------------
-function Jack(m::I, lambda::Vector{I}, alpha::T) where {T<:Real, I<:Integer}
+function JackSymbolic(m::I, lambda::Vector{I}, alpha::T) where {T<:Real, I<:Integer}
   if !isPartition(lambda)
       error("`lambda` must be a partition of an integer")
   end
